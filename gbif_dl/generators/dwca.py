@@ -161,10 +161,12 @@ def generate_urls(
     Returns:
         Iterable: item generator that yields files from generator
     """
-    if is_doi:
+    if is_doi(identifier):
         key = doi_to_gbif_key(identifier)
     else:
         key = identifier
+
+    print(f"resulting key: {key} from identifier: {identifier}")
 
     if dwca_root_path is None:
         dwca_root_path = tempfile.mkdtemp()
